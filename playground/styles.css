@@ -212,6 +212,11 @@ textarea::selection { background: rgba(120, 151, 255, .32); }
   display: flex; justify-content: space-between; gap: 20px; padding: 16px 2px 0;
   color: #8a8b90; font: 9px/1.4 "IBM Plex Mono", ui-monospace, monospace;
 }
+.repo-link {
+  color: var(--blue); text-decoration: none;
+  text-underline-offset: 3px;
+}
+.repo-link:hover { text-decoration: underline; }
 
 @media (max-width: 1120px) {
   .masthead { grid-template-columns: minmax(260px, .8fr) 1fr; }

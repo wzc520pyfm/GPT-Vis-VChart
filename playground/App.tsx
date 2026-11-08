@@ -244,6 +244,14 @@ export function App() {
 
       <footer className="footer">
         <span>GPT-Vis grammar · VisActor VChart renderer</span>
+        <a
+          className="repo-link"
+          href="https://github.com/wzc520pyfm/GPT-Vis-VChart"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub · wzc520pyfm/GPT-Vis-VChart ↗
+        </a>
         <span>流式解析 · ThemeSpec · React / DOM · 安全回退</span>
       </footer>
     </main>
