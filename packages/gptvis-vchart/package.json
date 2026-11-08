@@ -1,0 +1,72 @@
+{
+  "name": "gptvis-vchart",
+  "version": "0.1.0",
+  "description": "VChart adapter for GPT-Vis. Same vis syntax, GPTVis class, and chart constructors, rendered with VisActor VChart.",
+  "keywords": [
+    "gpt-vis",
+    "vchart",
+    "visactor",
+    "vis",
+    "llm",
+    "charts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wzc520pyfm/GPT-Vis-VChart.git",
+    "directory": "packages/gptvis-vchart"
+  },
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src",
+    "skills",
+    "CHANGELOG.md"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./syntax": {
+      "types": "./dist/syntax.d.ts",
+      "import": "./dist/syntax.js"
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc -p tsconfig.check.json --noEmit",
+    "test": "vitest run && npm run build && node scripts/check-package.mjs"
+  },
+  "peerDependencies": {
+    "@visactor/vchart": "^2.2.1",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "@visactor/vchart": "^2.2.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
+
