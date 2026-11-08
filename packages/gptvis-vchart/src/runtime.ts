@@ -1,14 +1,13 @@
-import { registerLiquidChart, registerVennChart, VChart } from '@visactor/vchart';
+import { VChart } from '@visactor/vchart';
 import { buildView, statusHtml, type ViewContext } from './build.js';
 import { readConfig } from './parser.js';
+import { ensureVChartRegistrations } from './register.js';
 import type { VisualizationTheme } from './theme.js';
 import { escapeHtml } from './text.js';
 import { copyText, downloadChart, mountVisShell, type VisShell } from './wrapper.js';
 
 type VChartSpec = ConstructorParameters<typeof VChart>[0];
 type VChartInstance = InstanceType<typeof VChart>;
-
-VChart.useRegisters([registerLiquidChart, registerVennChart]);
 
 const ZOOMABLE = new Set([
   'flow-diagram',
@@ -48,6 +47,7 @@ export class GPTVis {
   private sourceText = '';
   private zoom = 1;
   private resizeFrame = 0;
+  private rendering = false;
 
   constructor(options: GPTVisOptions) {
     this.options = options;
@@ -146,22 +146,33 @@ export class GPTVis {
   }
 
   private applySpec(spec: Record<string, unknown>): void {
+    ensureVChartRegistrations();
     const type = typeof spec.type === 'string' ? spec.type : '';
     if (this.chart && type !== this.chartType) this.disposeChart();
-    if (!this.chart) {
-      this.chartHost.replaceChildren();
-      this.chart = new VChart(spec as unknown as VChartSpec, {
-        dom: this.chartHost,
-        autoFit: true,
-        animation: false,
-        onError: (error: unknown) => this.fail(error),
-      });
-      this.chart.renderSync();
-    } else {
-      this.chart.updateSpecSync(spec as unknown as VChartSpec, true);
-      this.chart.renderSync();
+    this.rendering = true;
+    try {
+      if (!this.chart) {
+        this.chartHost.replaceChildren();
+        this.chart = new VChart(spec as unknown as VChartSpec, {
+          dom: this.chartHost,
+          autoFit: true,
+          animation: false,
+          onError: (error: unknown) => this.handleChartError(error),
+        });
+        this.chart.renderSync();
+      } else {
+        this.chart.updateSpecSync(spec as unknown as VChartSpec, true);
+        this.chart.renderSync();
+      }
+    } finally {
+      this.rendering = false;
     }
     this.chartType = type;
+  }
+
+  private handleChartError(error: unknown): void {
+    if (this.rendering) throw error instanceof Error ? error : new Error(String(error));
+    this.fail(error);
   }
 
   private scheduleResize(): void {
