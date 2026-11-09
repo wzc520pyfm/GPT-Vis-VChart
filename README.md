@@ -1,5 +1,9 @@
 # GPT-Vis VChart
 
+[![npm version](https://img.shields.io/npm/v/gptvis-vchart.svg)](https://www.npmjs.com/package/gptvis-vchart)
+[![npm](https://img.shields.io/npm/v/gptvis-vchart/latest.svg?label=latest)](https://www.npmjs.com/package/gptvis-vchart)
+[![npm downloads](https://img.shields.io/npm/dm/gptvis-vchart.svg)](https://www.npmjs.com/package/gptvis-vchart)
+
 让 [GPT-Vis](https://github.com/antvis/GPT-Vis) 的 `vis` 语法直接驱动 [VisActor VChart](https://github.com/VisActor/VChart)。
 
 ```vis
@@ -20,6 +24,18 @@ data
 
 - `packages/gptvis-vchart`：可发布适配层，用法见 [README](packages/gptvis-vchart/README.md)。
 - `playground`：可交互的语法编辑器和渲染演示。
+
+## 安装
+
+应用侧安装已发布的包，并一并安装 peer dependency `@visactor/vchart`（`^2.2.1`）：
+
+```bash
+npm install gptvis-vchart @visactor/vchart
+```
+
+React 入口还需要 React 18+；主包与 `gptvis-vchart/syntax` 不需要 React。完整用法见 [包 README](packages/gptvis-vchart/README.md)。
+
+## 本地开发
 
 ```bash
 npm install
