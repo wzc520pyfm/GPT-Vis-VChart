@@ -1,5 +1,9 @@
 # GPTVis VChart
 
+[![npm version](https://img.shields.io/npm/v/gptvis-vchart.svg)](https://www.npmjs.com/package/gptvis-vchart)
+[![npm](https://img.shields.io/npm/v/gptvis-vchart/latest.svg?label=latest)](https://www.npmjs.com/package/gptvis-vchart)
+[![npm downloads](https://img.shields.io/npm/dm/gptvis-vchart.svg)](https://www.npmjs.com/package/gptvis-vchart)
+
 让 GPT-Vis 的 `vis` 语法直接驱动 [VisActor VChart](https://github.com/VisActor/VChart)。公开入口与 `@antv/gpt-vis` 对齐：`GPTVis`、`parse`、`isVisSyntax`，以及 26 个同名构造函数。模型继续写声明式语法，统计图由 VChart 原生绘制。
 
 流式输出时，没写完的最后一行先不画，已经完整的部分照常出图。主题有默认、浅色、学院和深色，也可以传入 GPT-Vis 1.3 风格的 `ThemeSpec`。
