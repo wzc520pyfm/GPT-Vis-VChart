@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/gptvis-vchart/latest.svg?label=latest)](https://www.npmjs.com/package/gptvis-vchart)
 [![npm downloads](https://img.shields.io/npm/dm/gptvis-vchart.svg)](https://www.npmjs.com/package/gptvis-vchart)
 
-让 GPT-Vis 的 `vis` 语法直接驱动 [VisActor VChart](https://github.com/VisActor/VChart)。公开入口与 `@antv/gpt-vis` 对齐：`GPTVis`、`parse`、`isVisSyntax`，以及 26 个同名构造函数。模型继续写声明式语法，统计图由 VChart 原生绘制。
+让 [GPT-Vis](https://github.com/antvis/GPT-Vis) 的 `vis` 语法直接驱动 [VisActor VChart](https://github.com/VisActor/VChart)。公开入口与 `@antv/gpt-vis` 对齐：`GPTVis`、`parse`、`isVisSyntax`，以及 26 个同名构造函数。模型继续写声明式语法，统计图由 VChart 原生绘制。
 
 流式输出时，没写完的最后一行先不画，已经完整的部分照常出图。主题有默认、浅色、学院和深色，也可以传入 GPT-Vis 1.3 风格的 `ThemeSpec`。
 
@@ -192,4 +192,4 @@ npm run typecheck
 
 ## 许可
 
-MIT。`vis` 文法的设计来自 AntV GPT-Vis；本仓库独立实现解析器、VChart spec 生成器和回退渲染器。
+MIT。`vis` 文法的设计来自 [AntV GPT-Vis](https://github.com/antvis/GPT-Vis)；本仓库独立实现解析器、VChart spec 生成器和回退渲染器。

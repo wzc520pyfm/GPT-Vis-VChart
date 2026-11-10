@@ -97,7 +97,12 @@ export function App() {
             <span />
           </div>
           <div>
-            <p className="eyebrow">VisActor × GPT-Vis</p>
+            <p className="eyebrow">
+              VisActor ×{' '}
+              <a href="https://github.com/antvis/GPT-Vis" target="_blank" rel="noreferrer">
+                GPT-Vis
+              </a>
+            </p>
             <h1>GPTVis <em>VChart</em></h1>
           </div>
         </div>
@@ -243,7 +248,17 @@ export function App() {
       </section>
 
       <footer className="footer">
-        <span>GPT-Vis grammar · VisActor VChart renderer</span>
+        <span>
+          <a
+            className="repo-link"
+            href="https://github.com/antvis/GPT-Vis"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GPT-Vis
+          </a>{' '}
+          grammar · VisActor VChart renderer
+        </span>
         <a
           className="repo-link"
           href="https://github.com/wzc520pyfm/GPT-Vis-VChart"
